@@ -14,6 +14,9 @@ const NavBar = () => {
             <Nav.Link href="/Characters" className="mx-2">
               Characters
             </Nav.Link>
+            <Nav.Link href="/Planets" className="mx-2">
+              Planets
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

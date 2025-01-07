@@ -1,26 +1,26 @@
 import React, { useState } from "react";
-import CharacterComponent from "../Components/CharacterComponent";
+import PlanetComponent from "../Components/PlanetComponent";
 import { Container, Form, FormControl } from "react-bootstrap";
 
-const Characters = () => {
+const Planets = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <Container>
-      <h2 className="text-center mb-4">Star Wars Characters</h2>
+      <h2 className="text-center mb-4">Star Wars Planets</h2>
       <Form className="d-flex mb-4">
         <FormControl
           type="search"
-          placeholder="Search Characters"
+          placeholder="Search Planets"
           className="me-2"
           aria-label="Search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)} // Update with search handler later
         />
       </Form>
-      <CharacterComponent searchQuery={searchQuery} />
+      <PlanetComponent searchQuery={searchQuery} />
     </Container>
   );
 };
 
-export default Characters;
+export default Planets;

@@ -1,54 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GetCharacterById } from "../API/CharacterAPI";
+import { GetPlanetById } from "../API/PlanetAPI";
 import { Card, Col, Container, ListGroup, Row, Spinner } from "react-bootstrap";
 import { sentenceCase } from "change-case";
 
-const CharacterViewer = () => {
+const PlanetViewer = () => {
   const { id } = useParams();
-  const [character, setCharacter] = useState(null);
+  const [planet, setPlanet] = useState(null);
 
-  // fetch character data by ID
+  // fetch planet data by ID
   useEffect(() => {
-    GetCharacterById(id).then((res) => {
-      setCharacter(res.data.result);
+    GetPlanetById(id).then((res) => {
+      setPlanet(res.data.result);
     });
   }, [id]);
 
   return (
     <>
-      {character ? (
+      {planet ? (
         <Container className="my-4">
           <Row>
-            {/* Left Column - Character Details */}
+            {/* Left Column - Planet Details */}
             <Col md={6} className="mb-4">
               <Card className="shadow-sm">
                 <Card.Body>
                   <Card.Title className="display-5 mb-3">
-                    {character.properties.name}
+                    {planet.properties.name}
                   </Card.Title>
                   <Card.Subtitle className="mb-3 text-muted">
-                    {sentenceCase(character.properties.gender)}
+                    {sentenceCase(planet.properties.climate)}
                   </Card.Subtitle>
                   <Card.Text>
                     <ListGroup variant="flush">
                       <ListGroup.Item>
-                        <strong>Height: </strong>
-                        {character.properties.height}
-                        cm
+                        <strong>Diameter: </strong>
+                        {planet.properties.diameter}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <strong>Weight: </strong>
-                        {character.properties.mass}
-                        kg
+                        <strong>Gravity: </strong>
+                        {planet.properties.gravity}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <strong>Eye Color: </strong>
-                        {sentenceCase(character.properties.eye_color)}
+                        <strong>Population: </strong>
+                        {sentenceCase(planet.properties.population)}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <strong>Hair Color: </strong>
-                        {sentenceCase(character.properties.hair_color)}
+                        <strong>Terrain: </strong>
+                        {sentenceCase(planet.properties.terrain)}
                       </ListGroup.Item>
                     </ListGroup>
                   </Card.Text>
@@ -66,16 +64,16 @@ const CharacterViewer = () => {
                   <Card.Text>
                     <ListGroup variant="flush">
                       <ListGroup.Item>
-                        <strong>Skin Color: </strong>
-                        {sentenceCase(character.properties.skin_color)}
+                        <strong>Rotation Period: </strong>
+                        {sentenceCase(planet.properties.rotation_period)}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <strong>Description: </strong>
-                        {character.description}
+                        <strong>Orbital Period: </strong>
+                        {planet.properties.orbital_period}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <strong>Birth Year: </strong>
-                        {character.properties.birth_year}
+                        <strong>surface_water: </strong>
+                        {planet.properties.surface_water}
                       </ListGroup.Item>
                     </ListGroup>
                   </Card.Text>
@@ -97,4 +95,4 @@ const CharacterViewer = () => {
   );
 };
 
-export default CharacterViewer;
+export default PlanetViewer;

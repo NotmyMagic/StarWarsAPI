@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Button } from "react-bootstrap";
+
 const Home = () => {
   return (
     <Container className="text-center my-5">
